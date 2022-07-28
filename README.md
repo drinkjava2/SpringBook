@@ -3,11 +3,15 @@
 
 # 目录说明
 
-## 01-spring-boot-hello
-springboot入门 
+## 01-spring-boot-hello springboot入门
+运行
+mvn_springbootrun.bat 
 
-## 02-1-eureka-server 和  02-2-hello-services
-eureka服务和注册客户端
+## 02-1-eureka-server 服务注册
+运行 mvn_springbootrun.bat
+
+## 02-2-hello-services 服务提供
+运行 mvn_springbootrun.bat
 
 ## 03-1-many-eureka 多个eureka服务互相注
 先改hosts文件如下：  
@@ -19,7 +23,19 @@ mvn clean
 mvn package  
 runpeer1.bat  
 runpeer2.bat  
-runpeer3.bat  
  
+## 03-2-hello-services 服务提供者
+运行  
+mvn clean  
+mvn package  
+run8881.bat
+run8882.bat
+run8883.bat
+
+## 03-3-ribbon-consumer 服务消费者
+运行  
+mvn clean  
+mvn package  
+mvn_springbootrun.bat 
 
 
