@@ -38,4 +38,18 @@ mvn clean
 mvn package  
 mvn_springbootrun.bat 
 
+一些配置：
+Service提供者：
+eureka.client.register-with-eureka=true （为默认，下同)，如设为false将不注册
+eureka.instance.lease-renewal-interval-in-seconds=30 设定续约时间
+eureka.instance.lease-expiration-duration-in-seconds=90 设定过期时间
 
+Ribbon消费者：
+eureka.client.fetch-registry=true  获取服务清单list
+eureka.client.registry-fetch-interval-seconds=30 设定获取服务间隔
+
+eureka服务:
+eureka. server.enable-self-preservation=true 缺省是开启自我保护，如关闭将会踢除不活动的服务
+eureka.client.rigion 定义rigion
+eureka.client.serviceUrl.defaultZone 定义zone
+eureka.client.availability-zones 指定一或多个zone
