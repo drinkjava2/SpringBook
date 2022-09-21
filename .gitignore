@@ -10,5 +10,6 @@ bin/
 .idea/
 *.iml
 *.ipr
+*.log
 test/**/build/
 examples/**/build/
