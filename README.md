@@ -62,3 +62,45 @@ eureka. server.enable-self-preservation=true 缺省是开启自我保护，如�
 eureka.client.rigion 定义rigion
 eureka.client.serviceUrl.defaultZone 定义zone
 eureka.client.availability-zones 指定一或多个zone
+
+
+## 04-1-many-eureka 多个eureka服务互相注册(同第三章)
+先添加C:\Windows\System32\drivers\etc\hosts文件内容如下：  
+127.0.0.1      peer1  
+127.0.0.1      peer2  
+127.0.0.1      peer3  
+然后运行  
+mvn clean  
+mvn package  
+runpeer1.bat  
+runpeer2.bat  
+访问： http://localhost:1111/
+访问： http://localhost:1112/
+
+ ## 04-2-hello-services-withsleep 服务提供者
+与第三章相比，修改hello()方法，随机睡眠0~3秒模拟长时间操作
+运行  
+mvn clean  
+mvn package  
+run8881.bat
+run8882.bat
+run8883.bat
+访问： http://localhost:8881/hello
+访问： http://localhost:8882/hello
+访问： http://localhost:8883/hello
+
+## 04-3-ribbon-consumer-hystrix服务消费者
+相比与第三章，如下改动：
+1.在pom中添加 spring-cloud-starter-hystrix 依赖  
+2.ComsumerApplication类上添加 @EnableCircuitBreaker  
+  (或添加@SpringCloudApplication, 它等于@EnableCircuitBreaker + @SpringBootApplication +@EnableDiscoverClient)  
+3.新增HelloService.java,在helloService方法上添加@HystrixCommand, 并改造ConsumerController注入HelloService，详见源码  
+4.HelloService里添加时间logger输出到控制台
+运行  
+mvn clean  
+mvn package  
+mvn_springbootrun.bat 
+访问：http://localhost:9000/ribbon-consumer
+运行结果:
+1.如果断开8881或8882，会返回error
+2.如果超时2秒，也会返回error
