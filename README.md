@@ -129,6 +129,15 @@ http://localhost:9002/ribbon-consumer-2
 即可看到监控图表，线条表示访问量，实心圆大小表示流量，健康度由绿、黄、橙、红色来表示  
 或与turbine配合使用：上面的url输入: http://localhost:8989/turbine.stream即可，或直接输入：http://localhost:2001/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8989%2Fturbine.stream  
 
-    
-  
-  
+# ====05 RabbitMQ 配合 Hystrix ===    
+## 05-1-rabbitmq-hello 
+安装RabbitMQ:  
+1.下载并安装Erlang, http://www.erlang.org/downloads (otp_win64_25.1.exe)  
+2.下载并安装RabbitMQ,  http://www.rabbitmq.com/download (rabbitmq-server-3.11.0.exe)  
+   运行rabbitmq-plugins enable rabbitmq_management, 并停止和重启services  
+   打开 http://localhost:15672, 初始密码guest/guest,改成guest123  
+   添加用户springcloud/123456，并更新它的vhost权限为/  
+运行：   
+1.mvn_springbootrun.bat， 可以看到在admin page可以看到connection里出现一个springcloud的连接  
+2.运行maven_test.bat，可看到server命令行下打印出 REceiver: xxx xxx  
+
