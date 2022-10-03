@@ -25,6 +25,18 @@ public class HelloService {
 
         return result;
     }
+    
+    @HystrixCommand(fallbackMethod = "helloFallback", commandKey = "helloKey2")
+    public String helloService2() {
+        long start = System.currentTimeMillis();
+
+        String result = restTemplate.getForEntity("http://HELLO-SERVICE/hello", String.class).getBody();
+
+        long end = System.currentTimeMillis();
+        logger.info("Spend time : " + (end - start));
+
+        return result;
+    }
 
     public String helloFallback() {
         return "error";

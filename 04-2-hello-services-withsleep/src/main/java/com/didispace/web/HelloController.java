@@ -22,7 +22,7 @@ public class HelloController {
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() throws Exception {
         // 测试超时触发断路器
-        int sleepTime = new Random().nextInt(3000);
+        int sleepTime = new Random().nextInt(2000);
         logger.info("sleepTime:" + sleepTime);
         Thread.sleep(sleepTime);
 
@@ -34,7 +34,7 @@ public class HelloController {
     @RequestMapping(value = "/hello1", method = RequestMethod.GET)
     public String hello(@RequestParam String name) throws InterruptedException {
         // 测试超时触发断路器
-        int sleepTime = new Random().nextInt(3000);
+        int sleepTime = new Random().nextInt(2000);
         logger.info("sleepTime:" + sleepTime);
         Thread.sleep(sleepTime);
 
