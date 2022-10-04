@@ -153,7 +153,9 @@ http://localhost:9000/ribbon-consumer-2
 http://localhost:9002/ribbon-consumer
 http://localhost:9002/ribbon-consumer-2  
  
- # ====07 用Feign来代替Ribbon和Hystrix ===    
+ # ====07 用Feign来代替Ribbon和Hystrix, 声明式注入替换restTemplate模板 ===    
 07-1-many-eureka 同04-1，无修改  
 07-2-hello-services-withsleep 同04-2，无修改  
 07-3-feign-consumer  
+运行：依次1,2,3启动
+访问：http://localhost:9000/feign-consumer

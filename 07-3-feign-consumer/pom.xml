@@ -51,11 +51,6 @@
 			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.didispace</groupId>
-			<artifactId>hello-service-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
