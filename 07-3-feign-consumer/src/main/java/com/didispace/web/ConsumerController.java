@@ -5,13 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.didispace.dto.User;
+
 @RestController
 public class ConsumerController {
 
     @Autowired
     HelloService helloService;
     @Autowired
-    RefactorHelloService refactorHelloService;
+    RefactorHello456Service refactorHelloService;
 
     @RequestMapping(value = "/feign-consumer", method = RequestMethod.GET)
     public String helloConsumer() {

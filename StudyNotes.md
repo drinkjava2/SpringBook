@@ -155,7 +155,20 @@ http://localhost:9002/ribbon-consumer-2
  
  # ====07 用Feign来代替Ribbon和Hystrix, 声明式注入替换restTemplate模板 ===    
 07-1-many-eureka 同04-1，无修改  
-07-2-hello-services-withsleep 同04-2，无修改  
+07-2-hello-services-withsleep 添加User, Hello456Service等  
 07-3-feign-consumer  
-运行：依次1,2,3启动
-访问：http://localhost:9000/feign-consumer
+运行：依次1,2,3启动  
+访问：
+http://localhost:9000/feign-consumer  
+http://127.0.0.1:9000/feign-consumer2  
+http://127.0.0.1:9000/feign-consumer3  
+要点：   
+1)在Feign应用的service或Service接口上用@FeignClient(name="HELLO-SERVICE")就可在其它地方注入spring自动生成的实例  
+2)Service的继承，Service 提供者应用里不需要再添加 @RequestMapping(value = "/hello")，因为接口基类已有了  
+   @RestController  
+    public class RefactorHello456Controller implements Hello456Service   
+3)Feign 消费者应用里也不需要添加 @RequestMapping(value = "/hello")，因为接口基类已有了  
+   @FeignClient(value = "HELLO-SERVICE")  
+   public interface RefactorHello456Service extends com.didispace.service.Hello456Service  
+   
+   
