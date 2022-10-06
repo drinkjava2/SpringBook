@@ -157,7 +157,11 @@ http://localhost:9002/ribbon-consumer-2
 07-1-many-eureka 同04-1，无修改  
 07-2-hello-services-withsleep 添加User, Hello456Service等  
 07-3-feign-consumer  
-运行：依次1,2,3启动  
+运行：  
+07-1下的runLocalhostOnly.bat  
+07-2下的runLocalhost8881.bat
+07-2下的runLocalhost8882.bat
+07-3下的run.bat或runWithRetry.bat
 访问：
 http://localhost:9000/feign-consumer  
 http://127.0.0.1:9000/feign-consumer2  
@@ -170,12 +174,13 @@ http://127.0.0.1:9000/feign-consumer3
 3)Feign 消费者应用里也不需要添加 @RequestMapping(value = "/hello")，因为接口基类已有了  
    @FeignClient(value = "HELLO-SERVICE")  
    public interface RefactorHello456Service extends com.didispace.service.Hello456Service  
-4)如果运行runWithRetry.bat，将开启重试演示  
+4)如果运行runWithRetry.bat，将开启重试演示，注意DOS批处理一行写不下连行符是上尖号  
 关于Ribbon/Feign/Hystrix 的超时、重试问题总结，可以参考[这个](https://juejin.cn/post/6893079768997363719)    
 ribbon 的默认 ConnectTimeout 和 ReadTimeout 都是 1000 ms  
-要添加 ribbon.http.client.enabled = true 的配置，自定义 ribbon 的超时配置才能生效？  
 如果请求时间超过 ribbon 的超时配置，会触发重试；  
-在配置 fallback 的情况下，如果请求的时间（包括 ribbon 的重试时间），超出了 ribbon 的超时限制，或者 hystrix 的超时限制，那么就会熔断；  
+在配置 fallback 的情况下，如果请求的时间，从第一个请求开始算起，超出了ribbon的总超时限制（即多个Service的重试时间汇总），或者 hystrix 的超时限制，那么就会熔断  
+
+
 
 
 
