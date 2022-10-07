@@ -153,7 +153,7 @@ http://localhost:9000/ribbon-consumer-2
 http://localhost:9002/ribbon-consumer
 http://localhost:9002/ribbon-consumer-2  
  
- # ====07 用Feign来代替Ribbon和Hystrix, 声明式注入替换restTemplate模板 ===    
+# ====07 用Feign来代替Ribbon和Hystrix, 声明式注入替换restTemplate模板 ===    
 07-1-many-eureka 同04-1，无修改  
 07-2-hello-services-withsleep 添加User, Hello456Service等  
 07-3-feign-consumer  
@@ -180,8 +180,19 @@ ribbon 的默认 ConnectTimeout 和 ReadTimeout 都是 1000 ms
 如果请求时间超过 ribbon 的超时配置，会触发重试；  
 在配置 fallback 的情况下，如果请求的时间，从第一个请求开始算起，超出了ribbon的总超时限制（即多个Service的重试时间汇总），或者 hystrix 的超时限制，那么就会熔断  
 
-
-
+# ====08 zuul API gateway 网关 ===    
+08-1-many-eureka 同04-1，无修改  
+08-2-hello-services-withsleep 同07  
+08-3-feign-consumer  同07 
+08-4-api-gateway
+运行：  
+08-1下的runLocalhostOnly.bat  
+08-2下的runLocalhost8881.bat和runLocalhost8882.bat  
+08-3下的runWithRetry.bat  
+08-4下的mvn_springbootrun.bat  
+访问（各种路由见配置)：
+http://localhost:5555/api-a-url//hello  
+http://localhost:5555/api/a/hello  
 
 
    
