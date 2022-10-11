@@ -145,7 +145,7 @@ hystrix先发送到rabbitMQ, 再由turbine收集消息出报表
 06-3-ribbon-consumer-hystrix-mq 在04-3基础上，仅在pom中添加了spring-cloud-netflix-hystrix-amqp依赖  
 06-4-turbine-amqp 集成turbine和RabbitMQ   
 06-5-hystrix-dashboard 同04-5，无修改  
-运行：依次1,2,3,4,5启动  
+运行：06_runall.bat
 访问：
 http://localhost:2001/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A8989%2Fturbine.stream  
 http://localhost:9000/ribbon-consumer  
@@ -157,11 +157,7 @@ http://localhost:9002/ribbon-consumer-2
 07-1-many-eureka 同04-1，无修改  
 07-2-hello-services-withsleep 添加User, Hello456Service等  
 07-3-feign-consumer  
-运行：  
-07-1下的runLocalhostOnly.bat  
-07-2下的runLocalhost8881.bat
-07-2下的runLocalhost8882.bat
-07-3下的run.bat或runWithRetry.bat
+运行：  07_runall.bat
 访问：
 http://localhost:9000/feign-consumer  
 http://127.0.0.1:9000/feign-consumer2  
@@ -185,12 +181,8 @@ ribbon 的默认 ConnectTimeout 和 ReadTimeout 都是 1000 ms
 08-2-hello-services-withsleep 同07  
 08-3-feign-consumer  同07 
 08-4-api-gateway
-运行：  
-08-1下的runLocalhostOnly.bat  
-08-2下的runLocalhost8881.bat和runLocalhost8882.bat  
-08-3下的runWithRetry.bat  
-08-4下的mvn_springbootrun.bat  
-访问（各种路由见配置)：
+运行：  08_runall.bat
+访问（各种路由详见application.properties配置)：
 http://localhost:5555/api-a-url//hello  
 http://localhost:5555/api/a/hello  
 

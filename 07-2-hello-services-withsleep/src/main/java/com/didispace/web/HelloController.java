@@ -26,7 +26,7 @@ public class HelloController {
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() throws Exception {
         // 测试超时触发断路器
-        int sleepTime = new Random().nextInt(2000);
+        int sleepTime = new Random().nextInt(3000);
         logger.info("sleepTime:" + sleepTime);
         Thread.sleep(sleepTime);
 
