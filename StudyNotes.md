@@ -183,15 +183,25 @@ ribbon 的默认 ConnectTimeout 和 ReadTimeout 都是 1000 ms
 08-4-api-gateway
 运行：  08_runall.bat
 访问（各种路由详见application.properties配置)  
-http://localhost:5555/api-a-url//hello  
-http://localhost:5555/api/a/hello  
-http://localhost:5555/hello-service/hello （采用缺省每个服务自带serviceID)  
+http://localhost:5555/api-a-url/hello (路径符合api-a-url/**，映射到http://localhost:8881/)  
+http://localhost:5555/api/a/hello (路径符合/api/a/**,  映射到hello-service，即可能是hello-service:8881或8882之一，无超时重试)   
+http://localhost:5555/hello-service/hello （路径符合ServiceID/xxx, 所以映射到hello-service上，并添加参数hello，无超时重试)  
+http://localhost:5555/api-b/feign-consumer (路径符合 api-b, 映射到feign-consumer这个服务id上，有超时重试)  
 
-学习点：  
-zuul.AccessFilter.pre.disable=true 如果存在会禁用filter  
+filter的学习：  
+去掉 #zuul.AccessFilter.pre.disable=true将开启filter，见AccessFilter.java，然后每个URL都要加token才行，如：  
+http://localhost:5555/api/a/hello?accessToken=token   
+http://localhost:5555/api-b/feign-consumer?accessToken=token  
+
+错误处理:(略)  
+自定义路由规则:(略)  
+Cookie头:(略)  
+超时的设置:(略)  
+动态路由：(略)  
+动态filter (使用groovy):(略)  
 
 
-
+# ====09 Spring Cloud Config 分布式配置中心 ===    
 
 
 
