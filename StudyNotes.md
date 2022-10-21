@@ -182,9 +182,23 @@ ribbon 的默认 ConnectTimeout 和 ReadTimeout 都是 1000 ms
 08-3-feign-consumer  同07 
 08-4-api-gateway
 运行：  08_runall.bat
-访问（各种路由详见application.properties配置)：
+访问（各种路由详见application.properties配置)  
 http://localhost:5555/api-a-url//hello  
 http://localhost:5555/api/a/hello  
+http://localhost:5555/hello-service/hello （采用缺省每个服务自带serviceID)  
+
+学习点：  
+zuul.AccessFilter.pre.disable=true 如果存在会禁用filter  
+
+
+
+
+
+
+
+
+
+
 
 
    
