@@ -202,9 +202,28 @@ Cookie头:(略)
 
 
 # ====09 Spring Cloud Config 分布式配置中心 ===    
+09-1-config-server  
+启动：mvn_springbootrun.bat  
+访问：  
+http://localhost:7001/didispace/prod/somelabel  
+http://localhost:7001/didispace-prod.properties  
+http://localhost:7001/didispace2-any.properties (等于didispace2-prod.properties)  
+http://localhost:7001/didispace2-dev.properties  
 
+09-2-config-repo  
+repo里的这几个配置通常要放在git服务器上，但是因为是演示，所以用spring.profiles.active=native取本机文件的方式  
 
+09-3-config-client  
+启动： mvn_springbootrun.bat   
+访问： http://localhost:7002/from  （返回local-dev)  
+说明:
+1)bootstrap.properties中以下配置:   
+spring.application.name=didispace   
+spring.cloud.config.profile=dev  
+相当于配置文件从http://localhost:7001/didispace/dev中读取
+2)@Value注入也可以用注入@Autowired Environment,    env.getProperty("xxx","undefined")来代替
 
+springCloudConfig安全和加密:略
 
 
 
